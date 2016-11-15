@@ -10,8 +10,18 @@ exclude:
 timezone: America/New_York
 highlighter: false
 
-baseurl:
+baseurl: ""
+
+permalink: pretty
 
 collections:
   events:
     output: true
+
+# locale settings
+default_locale:     "en"
+authorized_locales: ["en","fr","es"]
+
+# add support for an atom feed
+gems:
+  - jekyll-feed

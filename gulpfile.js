@@ -1,13 +1,16 @@
 var gulp = require('gulp');
 var cp = require('child_process');
-var runSequence = require('run-sequence');
+var runSequence = require('run-sequence').use(gulp);
 var compass = require('gulp-compass');
-var uglify = require('gulp-uglifyjs');
+var uglify = require('gulp-uglify');
 var clean = require('gulp-clean');
 var browserSync = require('browser-sync');
 var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var cp = require('child_process');
+var fs = require('fs');
+var request = require('request');
+var git = require('gulp-git');
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -63,6 +66,19 @@ gulp.task('compress:main', function() {
     return task.pipe(gulp.dest('.tmp/assets/scripts'));
 });
 
+// Clone remote repo to sub folder ($CWD/sub/folder/git-test)
+gulp.task('cloneevents', function() {
+  git.clone('https://github.com/MissingMaps/events', {args: './app/_data/events'}, function(err) {
+    // handle err
+  });
+});
+
+gulp.task('cloneblog', function() {
+  git.clone('https://github.com/MissingMaps/blog', {args: './app/_posts'}, function(err) {
+    // handle err
+  });
+});
+
 
 // Build the jekyll website.
 gulp.task('jekyll', function (done) {
@@ -90,10 +106,8 @@ gulp.task('jekyll:rebuild', ['jekyll'], function () {
   browserSync.reload();
 });
 
-// Main build task
-// Builds the site. Destination --> _site
 gulp.task('build', function(done) {
-  runSequence(['jekyll', 'compress:main', 'compass'], ['copy:assets'], done);
+  runSequence(['cloneevents', 'cloneblog', 'jekyll', 'compress:main', 'compass'], ['copy:assets'], done);
 });
 
 // Default task.
@@ -158,3 +172,42 @@ function browserReload() {
     browserSync.reload();
   }
 }
+
+///////////////////////////////////////////////////////////////////////////////
+//--------------------------- Humans task -----------------------------------//
+//---------------------------------------------------------------------------//
+gulp.task('get-humans', function(){
+
+  var getHumans = function(callback){
+    var options = {
+      url: 'https://api.github.com/repos/MissingMaps/missingmaps.github.io/contributors',
+      headers: {
+        'User-Agent': 'request'
+      }
+    };
+
+    request(options, function (err, res) {
+      var humans = JSON.parse(res.body).map(function(human){
+        return {login: human.login, html_url: human.html_url, contributions: human.contributions}
+      });
+      humans.sort(function(a,b){
+        return b.contributions - a.contributions;
+      })
+      callback(humans);
+    });
+  }
+
+  getHumans(function(humans){
+    fs.readFile('./docs/humans-tmpl.txt', 'utf8', function (err, doc) {
+      if (err) throw err;
+      //Do your processing, MD5, send a satellite to the moon, etc.
+      for (i = 0; i < humans.length; i++) {
+        doc = doc + '\nContributor: '+humans[i].login + '\nGithub: '+humans[i].html_url +'\n';
+      }
+      fs.writeFile('./app/humans.txt', doc, function(err) {
+        if (err) throw err;
+        console.log('complete');
+      });
+    });
+  });
+});
