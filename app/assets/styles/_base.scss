@@ -376,6 +376,10 @@ header{
   background-image: url("/assets/graphics/old/404.jpg");
 }
 
+.header-checker {
+  background-image: url("/assets/graphics/old/validate.jpg");
+}
+
 /*----------------------------------------------*/
 /* Text  Styles*/
 /* weights: 300 thin, 400 regular, 700 bold, 900 black */
@@ -526,6 +530,8 @@ a:hover{
   }
   li{
     margin-bottom: 0.4em;
+    list-style-type: circle;
+    margin-left: 40px;
   }
   ol{
     margin-left: 20px;
@@ -533,7 +539,6 @@ a:hover{
 }
 
 .checklist{
-  margin-left:200px;
   p:before{
     content: "";
     background: url('../graphics/meta/checkbox.svg');
@@ -823,4 +828,13 @@ input[type="text"]{
 
 .center-text{
   text-align: center;
+}
+
+.founder {
+  width: 160px;
+}
+
+.member {
+  max-width: 120px;
+  max-height: 60px;
 }

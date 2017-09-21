@@ -6,13 +6,21 @@ home:             "es/"
 
 nav:
   - text:         "CONTRIBUIR"
-    url:          "/es/contribuir/"
+    links:
+      - text:     "APRENDA A MAPA"
+        url:      "/es/aprender/"
+      - text:     "APRENDER A VALIDAR"
+        url:      "/es/validar/"
+      - text:     "MAPSWIPE"
+        url:      "http://mapswipe.org/"
   - text:         "EVENTOS"
     links:
       - text:     "PRÓXIMOS EVENTOS"
         url:      "/es/eventos/"
       - text:     "ORGANIZAR UN EVENTO"
         url:      "/es/organizar/"
+      - text:     "MAPATHON SUPPORT"
+        url:      "/es/organizar/#helper-map-contents"
   - text:         "ACERCA DE"
     url:          "/es/acercade/"
   - text:         "BLOG"
@@ -24,7 +32,7 @@ nav:
       - text:     "TABLA DE LÍDERES" #######traduction pas top  ###
         url:      "http://www.missingmaps.org/leaderboards/"
       - text:     "OSMSTATS"
-        url:      "/osmstats/"
+        url:      "/es/osmstats/"
 
 #####################
 ## LANDING CONTENT ##
@@ -104,10 +112,11 @@ contact:
 ## CONTRIBUTE CONTENT ##
 ########################
 contribute:
-  title:        "Como contribuir"
+  title:        "Aprender a mapear"
   how_text:     "Si eres nuevo en el mundo de la cartografía digital, te recomendamos que mires los videos de la sección “Principiantes” para poder ponerte en marcha. Si ya cartografiaste antes, sigue el enlace “CARTOGRAFIAR”. También puede acceder a tutoriales adicionales con el LearnOSM."
   map_btn:      "CARTOGRAFIAR"
   learn_osm:    "TUTORIALES ADICIONALES"
+  youtube:      "YOUTUBE"
   beginners:    "Principiantes"
   step1:        "Crea una cuenta OpenStreetMap"
   step1_text:   "Ir a la página Web de <a href=\"https://www.openstreetmap.org/login\">OpenStreetMap</a> donde podrás registrarte para crear una cuenta. Luego sigue las instrucciones recibidas por correo electrónico para confirmar la nueva cuenta."
@@ -148,65 +157,123 @@ about:
     text1:      "La adhesión al proyecto está abierta a cualquier ONG, institución de educación o grupo de la sociedad civil dispuestos a contribuir a los objetivos y cumplir con la ética expuesta anteriormente. La aprobación de la adhesión es responsabilidad de las organizaciones actualmente afiliadas."
     text2:      "Si estás interesado en adherirse como miembro, por favor ponte en contacto con nosotros mediante el siguiente formulario."
   contact_btn:  "CONTÁCTANOS PARA CONVERTIRTE EN MIEMBRO"
-  madepossible: "Missing Maps es posible gracias a las siguientes organizaciones."
+  madepossible: "Missing Maps is made possible thanks to the following organizations."
   founders:     "Fundadores"
   members:      "Miembros"
   osm_text:     "es una iniciativa cuyo objetivo es crear y proporcionar datos geográficos libres a todo el mundo, apoyada por la organización sin ánimo de lucro"   ###### Raro aqui... parece que falta algo ##
+
+##########################
+## MAPATHON SUPPORT MAP ##
+##########################
+
+helper-map:
+  title:        "Mapathon Support"
+  description:  "The Missing Maps team can support you in a number of ways. Please reach out to us via Twitter or Facebook for help with task selection or if you have any questions.  Additionally, volunteer mapathon supporters are located around the globe! Please use the below map to connect to someone in your area. You can filter by language using the dropdowns.  Zooming the map will help you narrow down the list to people in your area."
+  signup-txt:   "Volunteer to help out by adding your contact info to the map via the button below."
+  signup-btn:   "Sign up"
+  filter-lang:  "Filter by a language"
+  filter-type:  "Filter by type"
+  all:          "All"
+  remote:       "Remote"
+  in-person:    "In Person"
 
 #####################
 ## HOST A MAPATHON ##
 #####################
 host:
   title:          "Organizar un Mapathon"
-  text:           "Un Mapathon es una oportunidad única para que los voluntarios puedan cartografiar las zonas más vulnerables de los países en desarrollo y, por lo tanto, permitir a las ONG's locales e internacionales responder con mayor eficacia frente a las crisis que afectan a esas regiones. Estas iniciativas de e-voluntariado son de gran ayuda para numerosas organizaciones humanitarias en todo el mundo en la respuesta a situaciones catastróficas. Es esencial conseguir una mayor red de voluntarios experimentados preparados para colaborar en caso de desastre bajo una mínima coordinación. Mira los vídeos que encontrarás a continuación para aprender más acerca de los Mapathones y la forma de organizarlos."
-  what_is:        "Que es un Mapathon?"
-  how_host:       "Como organizar un Mapathon"
-  prep_btn:       "PREPARATIVOS"
+  text:           "A mapathon is a great opportunity for volunteers to digitally connect and map the most vulnerable places in the developing world so that local and international Non-Governmental Organizations (NGO’s) can use these maps and data to better respond to crises affecting these areas. Up to date maps are important for the success of many humanitarian organizations around the world in responding to disasters. Through Missing Maps, you can volunteer your time to help create these maps, and have a real impact on the delivery of healthcare in the field. Check out the video below to learn more about what a mapathon is, and check out our resources on how to host one below."
+  what_is:        "¿Qué es un Mapathon?"
+  how_host:       "¿Cómo organizar un Mapathon?"
+  prep_btn:       "PLANNING CHECKLIST"
   check_btn:      "DÍA DEL EVENTO"
   materials_btn:  "RECURSOS"
   mapevent_btn:   "REGISTRAR UN EVENTO"
-  how_help:       "Cómo Missing Maps puede ayudar?"
-  how_help_text:  "Podemos apoyar a tu equipo de forma local y remota. Ponte en contacto con el coordinador de Missing Maps indicando la fecha y el lugar de tu evento para ayudarle a coordinar y gestionar tu evento con:"
-  how_help_steps:
-    - label: "Elección de una tarea cartográfica - Contacta-nos para obtener una lista de las tareas más urgentes a cartografiar durante tu evento."
-    - label: "Presentaciones en vivo - Un colaborador nuestro estará disponible, o bien presencialmente o bien en línea, para presentar Missing Maps."
-    - label: "Formación y Asesoramiento - Un colaborador nuestro estará disponible, o bien presencialmente o bien en línea, para guiar a los participantes a lo largo de la sesión."
-    - label: "Registro - Podemos asesorarte y proporcionarte herramientas sobre cómo registrarse y realizar un seguimiento de los participantes."
-    - label: "Marketing y Publicidad - Comunicados de prensa y publicaciones intranet pueden ser proporcionados por el coordinador de Missing Maps para cada evento. También podemos añadir informaciones de tu Mapathon en nuestra <a href= \"/events\"> Web de Missing Maps</a> y en las <a href= \"http://wiki.openstreetmap.org/wiki/Missing_Maps_mapathons\">Páginas Wiki.</a>"
-    - label: "Colaborar con socios locales de Missing Maps - Podemos presentarte a los socios locales de Missing Maps para ayudarte, en lo posible, a encontrar cartógrafos expertos y servicios de traducción."
-  prep_check:     "Checklist de los preparativos"
+  see_materials:    "Download a complete Step-by-Step Guide to Hosting a Mapathon from "
+  prep_check:     "Planning Checklist"
   prep_check_list:
-    - label: "Sala grande: capacidad recomendada de 100 personas"
-    - label: "Buena red Wi-Fi para permitir un acceso simultáneo óptimo"
-    - label: "Contacta Missing Maps para sugerencias de tareas cartográficas"
-    - label: "Mesas y sillas"
-    - label: "Retroproyector"
-    - label: "Ordenadores con ratones"
-    - label: "Alargadores eléctricos y cables"
-    - label: "Lista de inscritos al evento"
-    - label: "Un pica-pica"
-    - label: "Reclutar amigos, conocidos y voluntarios para ayudar con la logística"
-    - label: "Promocionar el evento por tus canales de redes sociales!"
-  event_check:    "El día del evento"
+    - label: "Choose a date"
+    - label: "Recruit volunteers to help"
+    - label: "Book a space"
+    - label: "Register your event <a target='_blank' href='https://docs.google.com/forms/d/e/1FAIpQLScdvsMHLor8mrDrHa-BQs2XzFb96vIrx3u--LHXWd1g7RncPg/viewform'>here</a>"
+    - label: "Recruit participants using eventbrite"
+    - label: "Pick a task using the <a target='_blank' href='http://tasks.hotosm.org/?sort_by=priority&direction=asc&search=missing+maps'>Tasking Manager</a>"
+    - label: "Ensure strong Wi-Fi"
+    - label: "Check that the <a target='_blank' href='http://tasks.hotosm.org/?sort_by=priority&direction=asc&search=missing+maps'>Tasking Manager</a> passes your location's firewall"
+    - label: "Tables and chairs"
+    - label: "Projector & audio visual equipment"
+    - label: "Laptops for all participants (tablets are not compatible)"
+    - label: "Mice (if possible) for all participants"
+    - label: "Make sure you have contact info for your event spaces tech and support staff"
+    - label: "Extra extension cords"
+    - label: "Print materials"
+    - label: "Order snacks"
+  event_check:    "Event Day Checklist"
   event_check_list:
-    - label: "Preparar la sala"
-    - label: "Preparar la mesa de recepción con las etiquetas de nombres, folletos, encuestas y el método de conexión de los asistentes"
-    - label: "Probar los equipos para asegurarte de que todo funcione correctamente"
-    - label: "Pegar los alargadores eléctricos al suelo"
-    - label: "Colocar las guías 'Table Top' en cada mesa"
-    - label: "Asegúrate de tener el contacto del responsable técnico de la sala"
-    - label: "Confirmar los pedidos de bebidas y comidas para el pica-pica"
-    - label: "Disfruta y diviértete!"
-    - label: "Pida a los participantes de completar la <a href=\"https://docs.google.com/forms/d/1ogzGmTIeYA4NVq5SwRU-vIA9Bw1Ua7NRhrCYKUrnPqQ/viewform\">encuesta del voluntariado</a>"
+    - label: "Set up room"
+    - label: "Test wifi and <a target='_blank' href='http://tasks.hotosm.org/?sort_by=priority&direction=asc&search=missing+maps'>Tasking Manager</a> access on both pc and mac: note, mapping software is not compatible with Internet Explorer"
+    - label: "Tape extension cords to the floor for safety"
+    - label: "Set up registration table"
+    - label: "Put out printed resources"
+    - label: "Get presentations ready"
+    - label: "Set up snacks"
+    - label: "Have fun mapping!"
   materials:      "Recursos"
   # if you have translated assets, put them in the assets folder and include filename here, if not, feel free to use the english versions as listed
   materials_list:
     - text:       "Guía paso a paso para organizar un Mapathon (en inglés)"
-      asset:      "MissingMaps_how_to_host_a_mapathon.pdf"
-    - text:       "Infografía Missing Maps: Cómo trabajamos"
-      asset:      "MissingMaps_Process_es.pdf"
-    - text:       "Guía Mapathon 'Table Top'"
-      asset:      "MissingMaps_tabletop_es.pdf"
+      asset:      "mapathon-materials/english/How_to_Host_a_Mapathon_EN.pdf"
+    - text:       "Everything else you need to run a successful mapathon! <i class='fa fa-file-archive-o' aria-hidden='true'></i> (zip folder)"
+      asset:      "mapathon-materials.zip"
+
+##############
+## Validate ##
+##############
+
+checker:
+    title: "Learn to Validate"
+    intro: "Validation is an important part of the Missing Maps process. Getting a second, third, or fourth pair of eyes on mapped features goes a long way in ensuring the quality of data being added to OpenStreetMap and being used in vulnerable communities around the world. Validating requires confidence in your mapping abilities as well as the willingness to help coach and advise newer mappers. The Missing Maps Project is a community of mappers with different levels of mapping experience, all who have a common goal of improving the availability of quality data for humanitarian use."
+    links:
+      faq: "FAQS"
+      josm: "JOSM VALIDATION"
+      wiki: "WIKI"
+    steps:
+      goal: "Validate"
+      step1: "Step 1"
+      step1_subtitle: "Identify if becoming a validator is right for you."
+      step1_text: "Validating isn’t for everyone; validation requires patience and attention to detail. Some experience mapping in OpenStreetMap and HOT projects is a must, but don’t feel that you need to be an expert to start. If you’re new to Missing Maps or OpenStreetMap mapping in general, head over to our <a href= \"/contribute\"> resources for new mappers. </a> Check out our <a href= \"/assets/downloads/MissingMaps_validation_faq_en.pdf\"> Validation FAQs </a> to gain some insight on what validating entails."
+      step2: "Step 2"
+      step2_subtitle: "Build your skills."
+      step2_text: "Becoming a more efficient mapper is crucial to becoming a validator. The <a href=\"https://josm.openstreetmap.de/\">JOSM Editor</a> is a customizable editor for OpenStreetMap with a number of tools and plugins to make mapping and validating easier! Check out this <a href=\"/assets/downloads/MissingMaps_validation_josm_en.pdf\"> guide to validation using the JOSM editor. </a> For instruction setting up JOSM, you can also head over to <a href= \"http://learnosm.org/en/josm/\"> LearnOSM </a>."
+      step2_video: "While validating in JOSM is preferred, you can also begin to improve the map through iD editor. Check out this video to learn some of the things to look for:"
+      step3: "Step 3"
+      step3_subtitle: Collaborate as part of the broader community.
+      step3_text: "Different validators have different techniques for validating. Join the conversation on the <a href= \"https://hotosm-slack.herokuapp.com/\"> HOTOSM slack </a> validation channel or reach out on the <a href=\"https://lists.openstreetmap.org/listinfo/hot\"> HOT Mailing List </a>. Contribute resources that you find helpful and give back to the community! Being a part of the Missing Maps community means working together in a positive and inclusive environment; when giving feedback to mappers, be sure to keep a positive tone and stay mindful of their contributions and desire to help - it’s what keeps OSM growing!"
+      step4: "Step 4"
+      step4_subtitle: "Validation FAQs"
+      faq:
+        question1: "<b>How do I know when I’m ready to validate?</b>"
+        answer1: "After you’ve had some experience mapping, you may find yourself correcting other contributors work. When you find that you are doing this on a regular basis, and you are finding it easier to spot and correct the mistakes, Validating is not to every person's liking but reach out to the HOTOSM community and ask for guidance! We’re happy to help!"
+        question2: "<b>Can I validate with iD Editor?</b>"
+        answer2: "Yes you can but it is a lot more difficult to catch all the errors. JOSM Editor has a lot more tools that help new validators find the errors and also to fix some of them so it is preferable that you learn to map with JOSM first."
+        question3: "<b>How do I get started validating?</b>"
+        answer3: "The first thing you need to do is learn about what validating is. The <a href=\"http://wiki.openstreetmap.org/wiki/OSM_Tasking_Manager/Validating_data/\">Validtating Data</a> wiki is a great place to start. You’ll want to learn to edit using the <a href=\"https://josm.openstreetmap.de/\">JOSM Editor</a>. JOSM has a number of very useful validation tools which can make the process much easier and more efficient."
+        question4: "<b>What are the steps when validating a project?</b>"
+        answer4: "The first thing to do is carefully read the instructions for the project you are going to validate so that you understand what the mappers are being asked to do. When checking out each task, do a quick once over to size up the quality of the mapping. Change or modify what is not in-line with the provided instructions, and depending on the amount of time you have available, either complete the task to how it should be mapped or invalidate and leave a constructive comment on why you are invalidating."
+        question5: "<b>How do I know the task is mapped well enough?</b>"
+        answer5: "Before you start validating check out the <i>instructions</i> tab on the project. See what the requesting organization is looking for (buildings, buildings and roads, roads, landuse, etc). When you check out a task make sure that everything being requested is mapped. If looking at buildings make sure they are all squared (corners right angles) or circled, depending on the shape. Do this on a building by building basis as not every building will need squared edges. Make sure every feature is tagged, not just <i>area=yes</i>."
+        question6: "<b>How should I be tagging roads?</b>"
+        answer6: "Typically, most HOTOSM tasks will request that you follow the <a href=\"http://wiki.openstreetmap.org/wiki/Highway_Tag_Africa/\">Highway Tag Africa Wiki</a>. This is due to “the road conditions in African countries not always corresponding to their economic and social role. A road typology should be based on the road importance and not on the surface or the visual appearance of a road."
+        question7: "<b>Should I just review the task and invalidate or should I finish the task and validate?</b>"
+        answer7: "This ultimately depends on how much time you have to validate. If you open the task and it’s obvious that the instructions weren’t followed and there are a lot of features that remain unmapped, then invalidate. If the task is complete but just needs some cleaning up (i.e. squared buildings, adding one or two more buildings) then it is advised that you fix what needs to be fixed in the task, and leave a detailed comment for the user who marked it as done including ways that this task could have been mapped better."
+        question8: "<b>What sort of feedback should I give?</b>"
+        answer8: "<b>Timely, positive, and constructive.</b> Many projects are mapped by beginners at mapathons. Please remember that <b>we were all new mappers at one point, and consider how your tone could impact the decision of a mapper to return to map again.</b> If you find a number of tasks that have been completed by the same mapper, you only need to tag them in the comment once or twice. If the contribution by the mapper is over 2 weeks old, it is not necessary to tag the user. "
+        answer8_instructions: "When leaving a comment, please tag the mapper in the comment using the “@” key. See some examples of useful comments below:"
+        answer8_example1: "<b>Well-mapped task (Validated):</b> Hi @user, thanks for contributing! Everything here looks great!"
+        answer8_example2: "<b>When a very new mapper is good, let them know!</b> Good work @user. You are correctly identifying the buildings/roads from the background imagery and mapping them at the correct size and shape.  Thank you for your time (or Thank you for contributing to this Project). Please keep mapping!"
+        answer8_example3: "<b>Okay-mapped task (Validated):</b> Hi @user, thanks for contributing! I found a few additional buildings/roads that could be mapped here, so I went ahead and mapped them. Also, please be sure to square your buildings, which can be done by pressing `S` in iD editor or `Q` in JOSM. I finished everything up here. Thanks again!"
+        answer8_example4: "<b>Poorly-mapped task (Invalidated):</b> Hi @user, thanks for contributing! It looks like there are quite a few buildings left to map here. Make sure if the task isn’t complete, to click `finished mapping` instead of `done`. If you have questions about what should be mapped, check out the instructions tab. Please reach out if you have any questions!"
+      get-started: "Now get started, check out these tasks that are in need of validation!"
 
 ###################
 ## Blog CONTENT ##

@@ -1,7 +1,9 @@
 var gulp = require('gulp');
 var cp = require('child_process');
 var runSequence = require('run-sequence').use(gulp);
-var compass = require('gulp-compass');
+var autoprefixer = require('gulp-autoprefixer');
+var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
 var clean = require('gulp-clean');
 var browserSync = require('browser-sync');
@@ -11,6 +13,7 @@ var cp = require('child_process');
 var fs = require('fs');
 var request = require('request');
 var git = require('gulp-git');
+var zip = require('gulp-zip');
 
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
@@ -29,21 +32,30 @@ gulp.task('copy:assets', function(done) {
 //--------------------------- Assets tasks -----------------------------------//
 //----------------------------------------------------------------------------//
 
-gulp.task('compass', function() {
-  return gulp.src('app/assets/styles/*.scss')
+var sassInput = 'app/assets/styles/*.scss';
+var sassOptions = {
+  includePaths: ['node_modules/foundation-sites/scss','node_modules/font-awesome/scss','.tmp/assets/styles' ],
+  errLogToConsole: true,
+  outputStyle: 'expanded'
+};
+var autoprefixerOptions = {
+  browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+};
+
+gulp.task('sass', function() {
+  return gulp.src(sassInput)
     .pipe(plumber())
-    .pipe(compass({
-      css: '.tmp/assets/styles',
-      sass: 'app/assets/styles',
-      style: 'expanded',
-      sourcemap: true,
-      require: ['sass-css-importer'],
-      bundle_exec: true
-    }))
-    .on('error', function(err) {
-      this.emit('end');
-    })
-    .pipe(browserSync.reload({stream:true}));
+    .pipe(sourcemaps.init())
+    .pipe(sass(sassOptions).on('error', sass.logError))
+    .pipe(autoprefixer(autoprefixerOptions))
+    .pipe(sourcemaps.write('.'))
+    .pipe(browserSync.reload({stream:true}))
+    .pipe(gulp.dest('.tmp/assets/styles'));
+});
+
+gulp.task('icons', function() {
+  return gulp.src('node_modules/font-awesome/fonts/**.*')
+    .pipe(gulp.dest('.tmp/assets/fonts'));
 });
 
 gulp.task('compress:main', function() {
@@ -53,29 +65,45 @@ gulp.task('compress:main', function() {
     ])
     .pipe(plumber());
 
-    if (environment == 'development') {
+    // if (environment == 'development') {
+    //   task = task.pipe(concat('main.min.js'));
+    //   console.log("concat scripts");
+    //
+    // }
+    // else {
+    //   task = task.pipe(uglify('main.min.js', {
+    //     mangle: false
+    //   }));
+    //   console.log("uglify scripts");
+    //
+    // }
+
+    //new version of uglify is breaking things this is a hotfix DK
       task = task.pipe(concat('main.min.js'));
-    }
-    else {
-      task = task.pipe(uglify('main.min.js', {
-        outSourceMap: true,
-        mangle: false
-      }));
-    }
+      console.log("concat scripts");
 
     return task.pipe(gulp.dest('.tmp/assets/scripts'));
 });
 
-// Clone remote repo to sub folder ($CWD/sub/folder/git-test)
-gulp.task('cloneevents', function() {
-  git.clone('https://github.com/MissingMaps/events', {args: './app/_data/events'}, function(err) {
-    // handle err
-  });
+gulp.task('zipmaterials', function() {
+  gulp.src('app/assets/downloads/mapathon-materials/**', { base : "app/assets/downloads/" })
+      .pipe(zip('mapathon-materials.zip'))
+      .pipe(gulp.dest('.tmp/assets/downloads'))
 });
 
-gulp.task('cloneblog', function() {
+// Clone remote repo to sub folder ($CWD/sub/folder/git-test)
+gulp.task('cloneevents', function(cb) {
+  git.clone('https://github.com/MissingMaps/events', {args: './app/_data/events'}, function(err) {
+    // handle err
+    cb();
+  });
+
+});
+
+gulp.task('cloneblog', function(cb) {
   git.clone('https://github.com/MissingMaps/blog', {args: './app/_posts'}, function(err) {
     // handle err
+    cb();
   });
 });
 
@@ -107,7 +135,7 @@ gulp.task('jekyll:rebuild', ['jekyll'], function () {
 });
 
 gulp.task('build', function(done) {
-  runSequence(['cloneevents', 'cloneblog', 'jekyll', 'compress:main', 'compass'], ['copy:assets'], done);
+  runSequence(['cloneevents', 'cloneblog'],['jekyll', 'compress:main', 'sass', 'icons', 'zipmaterials'], ['copy:assets'], done);
 });
 
 // Default task.
@@ -128,7 +156,7 @@ gulp.task('serve', ['build'], function () {
   });
 
   gulp.watch('app/assets/styles/**/*.scss', function() {
-    runSequence('compass');
+    runSequence('sass');
   });
 
   gulp.watch(['./app/assets/scripts/**/*.js', '!./app/assets/scripts/vendor/**/*'], function() {
@@ -159,7 +187,7 @@ gulp.task('stage', function(done) {
 
 // Removes jekyll's _site folder
 gulp.task('clean', function() {
-  return gulp.src(['_site', '.tmp'], {read: false})
+  return gulp.src(['_site', '.tmp', 'app/_data/events', 'app/_posts'], {read: false})
     .pipe(clean());
 });
 
